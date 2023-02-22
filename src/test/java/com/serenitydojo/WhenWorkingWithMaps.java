@@ -3,6 +3,7 @@ package com.serenitydojo;
 import com.serenitydojo.model.FoodType;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.serenitydojo.model.FoodType.*;
@@ -22,7 +23,7 @@ public class WhenWorkingWithMaps {
     // Maps let you associate a value with some other value
     @Test
     public void creatingANewSet() {
-        Map<String, String> countryCapitals = null;
+        Map<String, String> countryCapitals = Map.of("UK", "London", "France", "Paris", "Germany", "Berlin");
         // TODO: Create a new map and add the following associations:
         //  UK -> London
         //  France -> Paris
@@ -36,7 +37,11 @@ public class WhenWorkingWithMaps {
     // maps can work with different types, e.g. enums to strings
     @Test
     public void mapWithDifferentTypes() {
-        Map<String, FoodType> favoriteFood = null;
+        Map<String, FoodType> favoriteFood = new HashMap<>();
+
+        favoriteFood.put("cat", TUNA);
+        favoriteFood.put("dog", DELUXE_DOG_FOOD);
+        favoriteFood.put("hamster", LETTUCE);
         // TODO: Create a new map and add the following associations:
         //  "cat" -> TUNA
         //  "dog" -> DELUXE_DOG_FOOD
@@ -50,7 +55,7 @@ public class WhenWorkingWithMaps {
     // We can create a map more easily with the Map.of() method
     @Test
     public void usingMapOf() {
-        Map<String, FoodType> favoriteFood = null;
+        Map<String, FoodType> favoriteFood = Map.of("cat", TUNA, "dog", DELUXE_DOG_FOOD, "hamster", LETTUCE);
         // TODO: Create a new map and add the following associations using Map.of()
         //  "cat" -> TUNA
         //  "dog" -> DELUXE_DOG_FOOD
@@ -71,7 +76,7 @@ public class WhenWorkingWithMaps {
                 "hamster", LETTUCE);
 
         // TODO: Check that the map contains a key of "dog"
-        boolean containsDog = false;
+        boolean containsDog = favoriteFood.containsKey("dog");
 
         assertThat(containsDog).isTrue();
     }
@@ -85,7 +90,7 @@ public class WhenWorkingWithMaps {
                 "hamster", LETTUCE);
 
         // TODO: Check that the map contains a value of TUNA
-        boolean containsTuna = false;
+        boolean containsTuna = favoriteFood.containsValue(TUNA);
 
         assertThat(containsTuna).isTrue();
     }
